@@ -1,7 +1,7 @@
-import { google } from 'googleapis';
-import { GoogleAuth } from 'google-auth-library';
+const { google } = require('googleapis');
+const { GoogleAuth } = require('google-auth-library');
 
-class AnalyticsControllers {
+module.exports = class AnalyticsControllers {
 	static async getAnalytics(ctx) {
 		const auth = new GoogleAuth({
 			keyFilename: process.env.GCP_CREDENTIALS_PATH,
@@ -9,7 +9,7 @@ class AnalyticsControllers {
 		});
 		const reportRequests = ctx.request.body;
 		for (const reportRequest of reportRequests) {
-			reportRequest.viewId = '175215379';
+			reportRequest.viewId = process.env.GA_VIEW_ID;
 		}
 		google.options({auth});
 		const res = await google.analyticsreporting('v4').reports.batchGet({
@@ -22,5 +22,3 @@ class AnalyticsControllers {
 		};
 	}
 }
-
-export default AnalyticsControllers;
