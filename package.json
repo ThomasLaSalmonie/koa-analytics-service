@@ -1,0 +1,28 @@
+{
+  "name": "koa-analytics-service",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThomasLaSalmonie/koa-analytics-service.git"
+  },
+  "keywords": [
+    "koa",
+    "google",
+    "analytics"
+  ],
+  "author": "tlasalmonie@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ThomasLaSalmonie/koa-analytics-service/issues"
+  },
+  "homepage": "https://github.com/ThomasLaSalmonie/koa-analytics-service#readme",
+  "dependencies": {
+    "google-auth-library": "^7.9.1",
+    "googleapis": "^86.1.0"
+  }
+}
