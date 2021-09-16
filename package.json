@@ -13,7 +13,8 @@
   "keywords": [
     "koa",
     "google",
-    "analytics"
+    "analytics",
+    "google analytics"
   ],
   "author": "tlasalmonie@gmail.com",
   "license": "MIT",
