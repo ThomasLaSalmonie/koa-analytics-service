@@ -1,0 +1,34 @@
+version: v1.0
+name: Test MyApp
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu2004
+blocks:
+  - name: Test
+    task:
+      jobs:
+        - name: Test
+          commands:
+            - checkout
+            - sem-version node 12
+            - cache restore
+            - npm install
+            - cache store
+            - npm run build --if-present
+            - npm test
+  - name: 'Block #2'
+    task:
+      jobs:
+        - name: 'Job #1'
+          commands: []
+after_pipeline:
+  task:
+    jobs:
+      - name: 'Job #1'
+        commands: []
+promotions:
+  - name: Promotion 1
+    pipeline_file: pipeline_2.yml
+    auto_promote:
+      when: branch = 'master' AND result = 'passed'
